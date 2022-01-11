@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html>   
+
+<head>
+
+    <title>Car Acceptability Predictor</title>
+
+    <link rel="icon" href="..\static\image\Logo-Blue.png" />
+
+    <link rel="stylesheet" href="..\static\Homepage.css" />
+
+    <script>
+        function setPriceDDLOption(s1, s2) {
+
+            var category = document.getElementById(s1);
+            var carPrice = document.getElementById(s2);
+            carPrice.innerHTML = "";
+
+            if (category.value == "Hatchback") {
+                var price = ["|", "low_price|below RM 50,000", "med_price|RM 50,000 to RM 100,000", "high_price|RM 100,001 to RM 150,000", "vhigh_price|above RM 150,001"];
+            } else if (category.value == "Sedan") {
+                var price = ["|", "low_price|below RM 50,000", "med_price|RM 50,000 to RM 100,000", "high_price|RM 100,001 to RM 150,000", "vhigh_price|above RM 150,001"];
+            } else if (category.value == "SUV") {
+                var price = ["|", "low_price|below RM 100,000", "med_price|RM 100,000 to RM 150,000", "high_price|RM 150,001 to RM 200,000", "vhigh_price|above RM 200,001"];
+            }
+            for (var option in price) {
+
+                var pair = price[option].split("|");
+                var newOption = document.createElement("option");
+                newOption.value = pair[0];
+                newOption.innerHTML = pair[1];
+                carPrice.options.add(newOption);
+            }
+        }
+
+        function setMaintenanceCostsDDLOption(s1, s2) {
+
+            var category = document.getElementById(s1);
+            var carMaintenanceCosts = document.getElementById(s2);
+            carMaintenanceCosts.innerHTML = "";
+
+            if (category.value == "Hatchback") {
+                var maintenanceCosts = ["|", "low_maintenance_costs|below RM 800", "med_maintenance_costs|RM 800 to RM 1,000", "high_maintenance_costs|RM 1,001 to RM 1,200", "vhigh_maintenance_costs|above RM 1,201"];
+            } else if (category.value == "Sedan") {
+                var maintenanceCosts = ["|", "low_maintenance_costs|below RM 1,500", "med_maintenance_costs|RM 1,500 to RM 1,700", "high_maintenance_costs|RM 1,701 to RM 1,900", "vhigh_maintenance_costs|above RM 1,901"];
+            } else if (category.value == "SUV") {
+                var maintenanceCosts = ["|", "low_maintenance_costs|below RM 1,300", "med_maintenance_costs|RM 1,300 to RM 1,500", "high_maintenance_costs|RM 1,501 to RM 1,700", "vhigh_maintenance_costs|above RM 1,701"];
+            }
+            for (var option in maintenanceCosts) {
+                var pair = maintenanceCosts[option].split("|");
+                var newOption = document.createElement("option");
+                newOption.value = pair[0];
+                newOption.innerHTML = pair[1];
+                carMaintenanceCosts.options.add(newOption);
+            }
+        }
+
+        function setTrunkSizeDDLOption(s1, s2) {
+
+            var category = document.getElementById(s1);
+            var carTrunkSize = document.getElementById(s2);
+            carTrunkSize.innerHTML = "";
+
+            if (category.value == "Hatchback") {
+                var trunkSize = ["|", "small_trunk_size|below 200L", "med_trunk_size|200L to 300L", "large_trunk_size|above 301L"];
+            } else if (category.value == "Sedan") {
+                var trunkSize = ["|", "small_trunk_size|below 400L", "med_trunk_size|400L to 500L", "large_trunk_size|above 501L"];
+            } else if (category.value == "SUV") {
+                var trunkSize = ["|", "small_trunk_size|below 500L", "med_trunk_size|500L to 600L", "large_trunk_size|above 601L"];
+            }
+            for (var option in trunkSize) {
+                var pair = trunkSize[option].split("|");
+                var newOption = document.createElement("option");
+                newOption.value = pair[0];
+                newOption.innerHTML = pair[1];
+                carTrunkSize.options.add(newOption);
+            }
+        }
+
+        function checkIsSelected() {
+
+            var ddlCarCategory = document.getElementById("car_category");
+            var carCategorySelectedValue = ddlCarCategory.options[ddlCarCategory.selectedIndex].value;
+
+            //if (carCategprySelectedValue == "Please Select") {
+            //    alert("Please select all item from drop down list!!!");
+            //}
+
+
+            if (carCategorySelectedValue == "Please Select") {
+                alert("Please Select");
+            }
+            else {
+
+                // Get element for price
+                var ddlPrice = document.getElementById("price");
+                var priceSelectedValue = ddlPrice.options[ddlPrice.selectedIndex].value;
+
+                // Get element for maintenance costs
+                var ddlMaintenance_costs = document.getElementById("maintenance_costs");
+                var maintenanceCostsSelectedValue = ddlMaintenance_costs[ddlMaintenance_costs.selectedIndex].value
+
+                //// Get element for no of doors
+                //var ddlNoOfDoors = document.getElementById("no_of_doors");
+                //var noOfDoorsSelectedValue = ddlNoOfDoors[ddlNoOfDoors.selectedIndex].value
+
+                //// Get element for no of passengers
+                //var ddlNoOfPassengers = document.getElementById("no_of_passengers");
+                //var noOfPassengrsSelectedValue = ddlNoOfPassengers[ddlNoOfPassengers.selectedIndex].value
+
+                // Get element for trunk size
+                var ddlTrunkSize = document.getElementById("trunk_size");
+                var trunkSizeSelectedValue = ddlTrunkSize[ddlTrunkSize.selectedIndex].value;
+
+                //// Get element for safety
+                //var ddlSafaty = document.getElementById("safety");  
+                //var safetySelectedValue = ddlSafaty[ddlSafaty.selectedIndex].value
+
+                if (priceSelectedValue == "" || maintenanceCostsSelectedValue == "" || trunkSizeSelectedValue == "") {
+                    alert("Please an item from all drop down list!!!");
+                }
+
+                //if (trunkSizeSelectedValue == "") {
+                //    alert("Please Select");
+                //}
+            }
+
+
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <div id="navBar">
+        <div style=" padding:20px 0px 20px 20px; font-size:80%; font-family: 'Garamond' , sans-serif;">
+            Car Acceptability Predictor
+        </div>
+        
+    </div>
+
+    <div style="background-color:black;">
+            <img src="..\static\image/Background.jpg" id="headerImage" class="img-responsive" />
+    </div>
+
+    <div id="content">
+        <p style="margin-top:40px; font-size:25px; font-weight:bold; margin-left:-10%; margin-bottom:20px;">Enter your car feature:</p>
+
+        <form method="POST" , action="{{url_for('home')}}">
+            <table style="width:65%;">
+
+                <tr>
+                    <td style="text-align:right; width:30%;">
+                        <label>Car category:</label>
+                    </td>
+                    <td width="5%">&nbsp;</td>
+                    <td>
+                        <select id="car_category" name="slct1" onchange="setPriceDDLOption(this.id,'price'), setMaintenanceCostsDDLOption(this.id, 'maintenance_costs'), setTrunkSizeDDLOption(this.id, 'trunk_size')">
+                            <!--<option value="Please Select">Please Select</option>-->
+                            <option value="Hatchback" selected>Hatchback</option>
+                            <option value="Sedan">Sedan</option>
+                            <option value="SUV">SUV</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align:right; width:30%;">
+                        <label>Price Range:</label>
+                
+                    </td>
+                    <td width="5%">&nbsp;</td>
+                    <td>
+                        <select id="price" name="price">
+                            <option value=""></option>
+                            <option value="low_price">below RM 50,000</option>
+                            <option value="med_price">RM 50,000 to RM 100,000</option>
+                            <option value="high_price">RM 100,001 to RM 150,000</option>
+                            <option value="vhigh_price">above RM 150,001</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align:right; width:30%;">
+                        <label>Maintenance Costs:</label>
+                    </td>
+                    <td width="5%">&nbsp;</td>
+                    <td>
+                        <select id="maintenance_costs" name="maintenance_costs">
+                            <option value=""></option>
+                            <option value="low_maintenance_costs">below RM 800</option>
+                            <option value="med_maintenance_costs">RM 800 to RM 1,000</option>
+                            <option value="high_maintenance_costs">RM 1,001 to RM 1,200</option>
+                            <option value="vhigh_maintenance_costs">above RM 1,201</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right; width:40%;">
+                        <label>Trunk Size:</label>
+                    </td>
+                    <td width="5%">&nbsp;</td>
+                    <td>
+                        <select id="trunk_size" name="trunk_size">
+                            <option value=""></option>
+                            <option value="small_trunk_size">below 200L</option>
+                            <option value="med_trunk_size">200L to 300L</option>
+                            <option value="large_trunk_size">above 301L</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">
+                        <label>No of Doors</label>
+                    </td>
+                    <td width="5%">&nbsp;</td>
+                    <td>
+                        <select id="no_of_doors" name="no_of_doors">
+                            <option value="2doors">2</option>
+                            <option value="3doors">3</option>
+                            <option value="4doors">4</option>
+                            <option value="5more">5 or more</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">
+                        <label>No of passengers:</label>
+                    </td>
+                    <td width="5%">&nbsp;</td>
+                    <td>
+                        <select id="no_of_passengers" name="no_of_passengers">
+                            <option value="2passengers">2</option>
+                            <option value="4passengers">4</option>
+                            <option value="5OrMorePassengers">5 or more</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">
+                        <label>Safety:</label>
+                    </td>
+                    <td width="5%">&nbsp;</td>
+                    <td>
+                        <select id="safety" name="safety">
+                            <option value="low_safety">Low</option>
+                            <option value="med_safety">Medium</option>
+                            <option value="high_safety">High</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+
+            <input type="submit" value="Predict" onclick="checkIsSelected()"/>
+        </form>
+</div>
+
+    <footer style="background-color:black; height:100px;">
+        &nbsp;
+
+    </footer>
+    
+
+</body>
+
+</html>

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Predicted Result</title>
+    <link rel="icon" href="..\static\image\Logo-Blue.png" />
+
+    <link rel="stylesheet" href="..\static\Homepage.css" />
+
+    <link rel="stylesheet" href="..\static\result.css" />
+</head>
+
+<body>
+
+    <div id="navBar">
+        <div style="padding:20px 0px 20px 20px; font-size:80%; font-family: 'Garamond', sans-serif;">
+            Car Acceptability Predictor
+        </div>
+
+    </div>
+
+    <div style="background-color:black;">
+        <img src="..\static\image/Background.jpg" id="headerImage" class="img-responsive" />
+    </div>
+
+    <div style="width:50%; float:left; background-color:white; height:600px;">
+
+        <p style="margin:5% 0% 4% 5%; font-size:120%;">Predicted Result:</p>
+
+        {%if data[0] == 1%}
+        <!--Result for unacc-->
+        <img src="../static/image/unacc(1).jpg" style="vertical-align:central; margin:0% 0% 2% 23%; width:50%;" />
+        <p style="color:red; text-align:center; font-size:110%; font-weight:bold;">This car is unacceptable by majority of the people</p>
+
+        {%endif%}
+
+        {%if data[0] == 2%}
+
+        <!--Result for acc-->
+        <img src="../static/image/acc.jpg" style="vertical-align:central; margin:0% 0% 2% 23%; width:50%;" />
+        <p style="color: rgb(0, 206, 27); text-align: center; font-size: 110%; font-weight:bold;">This car is acceptable by majority of the people</p>
+
+        {%endif%}
+
+        {%if data[0] == 3%}
+
+        <!--Result for good-->
+        <img src="../static/image/good.jpg" style="vertical-align:central; margin:0% 0% 0% 23%; width:40%;" />
+        <p style="color: rgb(0, 206, 27); margin-left:19%; font-size: 110%; font-weight:bold;">This car is has a good acceptability</p>
+
+        {%endif%}
+
+        {%if data[0] == 4%}
+
+        <!--Result for vgood-->
+        <img src="../static/image/good.jpg" style="vertical-align:central; margin:0% 0% 0% 23%; width:50%;" />
+        <p style="color: rgb(0, 206, 27); margin-left:19%; font-size: 110%; font-weight:bold;">This car is has a very good acceptability</p>
+        {%endif%}
+
+    </div>
+
+    <div style="width:50%; float:left; background-color: rgb(245, 245, 245); height:300px;">
+
+        <p style="margin:5% 0% 4% 5%; font-size:120%;">Input Provided:</p>
+
+        <table style="margin-left:5%;">
+            <tr>
+                <td style="text-align: right; font-weight:bold;">
+                    Car Category:
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+                <td style="text-align:left;">
+
+
+                    {%if data[1] == 1%}
+
+                    Hatchback
+
+                    {%endif%}
+
+                    {%if data[1] == 2%}
+
+                    Sedan
+
+                    {%endif%}
+
+                    {%if data[1] == 3%}
+
+                    SUV
+
+                    {%endif%}
+
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; font-weight:bold;">
+                    Price Range:
+                </td>
+                <td>
+                </td>
+                <td>
+
+                    <!--Price range when user selected hatchback-->
+                    {%if data[1] == 1%}
+
+                    {%if data[2] == 1%}
+
+                    below RM 50,000
+
+                    {%endif%}
+
+                    {%if data[2] == 2%}
+
+                    RM 50,000 to RM 100,000
+
+                    {%endif%}
+
+                    {%if data[2] == 3%}
+
+                    RM 100,001 to RM 150,000
+
+                    {%endif%}
+
+                    {%if data[2] == 4%}
+
+                    above RM 150,001
+
+                    {%endif%}
+
+                    {%endif%}
+
+                    <!--Price range when user selected Sedan-->
+                    {%if data[1] == 2%}
+
+                    {%if data[2] == 1%}
+
+                    below RM 50,000
+
+                    {%endif%}
+
+                    {%if data[2] == 2%}
+
+                    RM 50,000 to RM 100,000
+
+                    {%endif%}
+
+                    {%if data[2] == 3%}
+
+                    RM 100,001 to RM 150,000
+
+                    {%endif%}
+
+                    {%if data[2] == 4%}
+
+                    above RM 150,001
+
+                    {%endif%}
+
+                    {%endif%}
+
+                    <!--Price range when user selected SUV-->
+                    {%if data[1] == 3%}
+
+                    {%if data[2] == 1%}
+
+                    below RM 100,000
+
+                    {%endif%}
+
+                    {%if data[2] == 2%}
+
+                    RM 100,000 to RM 150,000
+
+                    {%endif%}
+
+                    {%if data[2] == 3%}
+
+                    RM 150,001 to RM 200,000
+
+                    {%endif%}
+
+                    {%if data[2] == 4%}
+
+                    above RM 200,001
+
+                    {%endif%}
+
+                    {%endif%}
+
+
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; font-weight:bold;">
+                    Maintenance Costs:
+                </td>
+                <td>
+                </td>
+                <td>
+
+                    <!--Maintenance Costs when user selected hatchback-->
+                    {%if data[1] == 1%}
+
+                    {%if data[3] == 1%}
+
+                    below RM 800
+
+                    {%endif%}
+
+                    {%if data[3] == 2%}
+
+                    RM 800 to RM 1,000
+
+                    {%endif%}
+
+                    {%if data[3] == 3%}
+
+                    RM 1,001 to RM 1,200
+
+                    {%endif%}
+
+                    {%if data[3] == 4%}
+
+                    above RM 1,201
+
+                    {%endif%}
+
+                    {%endif%}
+
+                    <!--Maintenance Costs when user selected Sedan-->
+                    {%if data[1] == 2%}
+
+                    {%if data[3] == 1%}
+
+                    below RM 1,500
+
+                    {%endif%}
+
+                    {%if data[3] == 2%}
+
+                    RM 1,500 to RM 1,700
+
+                    {%endif%}
+
+                    {%if data[3] == 3%}
+
+                    RM 1,701 to RM 1,900
+
+                    {%endif%}
+
+                    {%if data[3] == 4%}
+
+                    above RM 1,901
+
+                    {%endif%}
+
+                    {%endif%}
+
+                    <!--Maintenance Costs when user selected SUV-->
+                    {%if data[1] == 3%}
+
+                    {%if data[3] == 1%}
+
+                    below RM 1,300
+
+                    {%endif%}
+
+                    {%if data[3] == 2%}
+
+                    RM 1,300 to RM 1,500
+
+                    {%endif%}
+
+                    {%if data[3] == 3%}
+
+                    RM 1,501 to RM 1,700
+
+                    {%endif%}
+
+                    {%if data[3] == 4%}
+
+                    above RM 1,701
+
+                    {%endif%}
+
+                    {%endif%}
+
+
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; font-weight:bold;">
+                    Trunk Size:
+                </td>
+                <td>
+                </td>
+                <td>
+
+                    <!--Trunk Size when user selected hatchback-->
+                    {%if data[1] == 1%}
+
+                    {%if data[4] == 1%}
+
+                    below 200L
+
+                    {%endif%}
+
+                    {%if data[4] == 2%}
+
+                    200L to 300L
+
+                    {%endif%}
+
+                    {%if data[4] == 3%}
+
+                    above 301L
+
+                    {%endif%}
+
+                    {%endif%}
+
+                    <!--Trunk Size when user selected Sedan-->
+                    {%if data[1] == 2%}
+
+                    {%if data[4] == 1%}
+
+                    below 400L
+
+                    {%endif%}
+
+                    {%if data[4] == 2%}
+
+                    400L to 500L
+
+                    {%endif%}
+
+                    {%if data[4] == 3%}
+
+                    above 501L
+
+                    {%endif%}
+
+                    {%endif%}
+
+                    <!--Trunk Size when user selected SUV-->
+                    {%if data[1] == 3%}
+
+                    {%if data[4] == 1%}
+
+                    below 500L
+
+                    {%endif%}
+
+                    {%if data[4] == 2%}
+
+                    500L to 600L
+
+                    {%endif%}
+
+                    {%if data[4] == 3%}
+
+                    above 601L
+
+                    {%endif%}
+
+                    {%endif%}
+
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; font-weight:bold;">
+                    No of Doors:
+                </td>
+                <td>
+                </td>
+                <td>
+
+                    <!--No of Doors -->
+                    {%if data[5] == 1%}
+
+                    2
+
+                    {%endif%}
+
+                    {%if data[5] == 2%}
+
+                    3
+
+                    {%endif%}
+
+                    {%if data[5] == 3%}
+
+                    4
+
+                    {%endif%}
+
+                    {%if data[5] == 4%}
+
+                    5 or more
+
+                    {%endif%}
+
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; font-weight:bold;">
+                    No of Passengers:
+                </td>
+                <td>
+                </td>
+                <td>
+
+                    <!--No of Passengers -->
+                    {%if data[6] == 1%}
+
+                    2
+
+                    {%endif%}
+
+                    {%if data[6] == 2%}
+
+                    4
+
+                    {%endif%}
+
+                    {%if data[6] == 3%}
+
+                    5 or more
+
+                    {%endif%}
+
+                </td>
+            </tr>
+
+            <tr>
+                <td style="text-align: right; font-weight:bold;">
+                    Safety:
+                </td>
+                <td>
+                </td>
+                <td>
+
+                    <!--Safety -->
+                    {%if data[7] == 1%}
+
+                    Low
+
+                    {%endif%}
+
+                    {%if data[7] == 2%}
+
+                    Medium
+
+                    {%endif%}
+
+                    {%if data[7] == 3%}
+
+                    High
+
+                    {%endif%}
+
+                </td>
+            </tr>
+        </table>
+
+        <a href="/">
+            <input type="submit" value="Next Prediction" style="width:20%; height:40px; margin-left:10%;" />
+        </a>
+    </div>
+
+    <footer style=" clear:both; background-color:black; height:100px;">
+        &nbsp;
+    </footer>
+
+</body>
+
+</html>
